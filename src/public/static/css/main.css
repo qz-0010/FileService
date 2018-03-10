@@ -1,0 +1,6 @@
+.form__loader {
+    height: 15px;
+    background: green;
+    width: 0;
+    transition: width .1s ease;
+}

@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    link(rel="stylesheet" href="/static/css/main.css")
+  body
+    .page
+      
+      form(name="upload" method="POST" action="/upload" enctype="multipart/form-data").form
+        .form__loader
+        .form__i-row
+          input(type="file" name="files" multiple="true").form__input
+        input(type="submit")
+
+    script(src="/static/js/app.js")
