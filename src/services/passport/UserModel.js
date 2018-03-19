@@ -6,17 +6,21 @@ function json(obj) {
   return JSON.stringify(obj);
 }
 
+function errorJSON(err) {
+  return json({"error": err});
+}
+
 const userSchema = new mongoose.Schema({
   email: {
     type:     String,
     unique:   true,
-    required: json({ "error": {"email": "required"} }),
+    required: errorJSON({"email": "required"}),
     validate: [
       {
         validator: function checkEmail(value) {
           return /^[-.\w]+@([\w-]+\.)+[\w-]{2,12}$/.test(value);
         },
-        msg: json({ "error": {"email": "novalid"} })
+        msg: errorJSON({"email": "novalid"})
       }
     ]
   },
@@ -24,7 +28,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  salt:          {
+  salt: {
     required: true,
     type: String
   }
@@ -40,9 +44,9 @@ const userSchema = new mongoose.Schema({
 
 userSchema.virtual('password')
     .set(function(password) {
-        if (!password) this.invalidate('password', json({ "error": {"password": "required"} }))
+        if (!password) this.invalidate('password', errorJSON({"password": "required"}))
 
-        if (password.length < 4) this.invalidate('password', json({ "error": {"password": "minlength"} }))
+        if (password.length < 4) this.invalidate('password', errorJSON({"password": "minlength"}))
 
         this._plainPassword = password;
 
