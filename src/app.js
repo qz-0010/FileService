@@ -1,8 +1,8 @@
 const path = require('path');
 const config = require('./config');
+const db = require('./db');
 const express = require('express');
 const server = require('./server');
-const db = require('./db');
 const bodyParser = require('body-parser');
 const errorsMW = require('./middlewares/errors');
 const viewsService = require('./services/views');
@@ -18,7 +18,6 @@ app.use( express.static(publicPath) );
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-// db();
 server(app);
 
 // == UPLOAD SERVICE ==
@@ -35,7 +34,9 @@ app.use(require('express-session')({
   saveUninitialized: false
 }));
 
-// passportService(app);
+// == PASSPORT SERVICE ==
+passportService(app);
+// == PASSPORT SERVICE ==
 
 viewsService(app);
 

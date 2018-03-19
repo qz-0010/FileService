@@ -1,6 +1,7 @@
+const User = require('./UserModel');
+const passport = require('passport');
+
 module.exports = (app) => {
-    const User = require('./UserModel');
-    const passport = require('passport');
     
     app.use( passport.initialize() );
     app.use( passport.session() );
@@ -29,7 +30,32 @@ module.exports = (app) => {
         })(req, res, next);
     });
 
-    app.post('/register', (req, res, next) => {
-        
+    app.post('/register', async (req, res, next) => {
+        const user = new User({
+            email: req.body.email,
+            password: req.body.password
+        });
+
+        console.log(req.body);
+
+        // try{
+            user.save();
+            console.log('save');
+            res.send('success');
+        // } catch(err) {
+            // if (err.name != 'ValidationError') {
+            //     res.send('error');
+            //     throw err;
+            // }
+
+            // var errors = [];
+
+            // for(let key in err.errors){
+            //     let error = err.errors[key];
+            //     errors.push({key: error.message});
+            // }
+
+            // res.send(errors);
+        // }
     });
 }
