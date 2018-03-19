@@ -10,9 +10,13 @@
     "test": "test"
   },
   "scripts": {
-    "dev": "nodemon app.js"
+    "start": "concurrently \"node app.js\" \"npm run build_client\"",
+    "dev": "concurrently -k \"nodemon app.js\" \"npm run dev_client\"",
+    "dev_client": "npm run dev -C client",
+    "build_client": "npm run build -C client"
   },
   "dependencies": {
+    "concurrently": "^3.5.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
