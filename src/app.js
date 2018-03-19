@@ -18,7 +18,7 @@ app.use( express.static(publicPath) );
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-db();
+// db();
 server(app);
 
 // == UPLOAD SERVICE ==
@@ -35,7 +35,7 @@ app.use(require('express-session')({
   saveUninitialized: false
 }));
 
-passportService(app);
+// passportService(app);
 
 viewsService(app);
 
