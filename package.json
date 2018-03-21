@@ -8,8 +8,7 @@
     "dev": "npm run dev -C src",
     "dev_client": "npm run dev_client -C src",
     "build_client": "npm run build_client -C src",
-    "build": "npm run build_client && npm run zip",
-    "zip": "cd src && zip -r ../builds/\"$(date +%s)-build\" * -x */\\.* *.git* \\.* node_modules/**\\* client/node_modules/**\\* public/files/**\\*"
+    "build": "npm run build_client && bash zip.sh"
   },
   "repository": {
     "type": "git",

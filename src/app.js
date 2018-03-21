@@ -1,6 +1,3 @@
-
-
-
 // Include the cluster module
 var cluster = require('cluster');
 
@@ -29,7 +26,7 @@ if (cluster.isMaster) {
   const path = require('path');
   const config = require('./config');
   const AWS = require('aws-sdk');
-  // const db = require('./db');
+  const db = require('./db');
   const express = require('express');
   const server = require('./server');
   const bodyParser = require('body-parser');
@@ -39,10 +36,6 @@ if (cluster.isMaster) {
   const passportService = require('./services/passport');
   
   AWS.config.region = process.env.REGION;
-  const sns = new AWS.SNS();
-  const ddb = new AWS.DynamoDB();
-  // var ddbTable =  process.env.STARTUP_SIGNUP_TABLE;
-  // var snsTopic =  process.env.NEW_SIGNUP_TOPIC;
 
   const app = express();
 
@@ -73,9 +66,6 @@ if (cluster.isMaster) {
   // passportService(app);
   // == PASSPORT SERVICE ==
 
-
-
-  
   viewsService(app);
   
   errorsMW(app);
