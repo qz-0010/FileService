@@ -10,14 +10,15 @@
     "test": "test"
   },
   "scripts": {
-    "start": "concurrently \"node app.js\" \"npm run build_client\"",
+    "start": "node app.js",
     "dev": "concurrently -k \"nodemon app.js\" \"npm run dev_client\"",
     "dev_client": "npm run dev -C client",
     "build_client": "npm run build -C client"
   },
   "dependencies": {
-    "concurrently": "^3.5.1",
+    "aws-sdk": "^2.211.1",
     "body-parser": "^1.18.2",
+    "concurrently": "^3.5.1",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
     "mongoose": "^5.0.9",

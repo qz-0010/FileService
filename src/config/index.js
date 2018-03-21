@@ -5,6 +5,7 @@ module.exports = {
     port: PORT || 3000,
     secret:   'mysecret',
     db: MONGO_URI || 'mongodb://admin:admin@ds213229.mlab.com:13229/file_service',
+    cdn: 'http://dtf9vso0dcj98.cloudfront.net',
     dbOptions: {
       // useMongoClient: true,
       autoIndex: false, // Don't build indexes

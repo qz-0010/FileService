@@ -1,0 +1,24 @@
+{
+  "name": "fileservice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm start -C src",
+    "dev": "npm run dev -C src",
+    "dev_client": "npm run dev_client -C src",
+    "build_client": "npm run build_client -C src",
+    "build": "npm run build_client && npm run zip",
+    "zip": "cd src && zip -r ../builds/\"$(date +%s)-build\" * -x */\\.* *.git* \\.* node_modules/**\\* client/node_modules/**\\* public/files/**\\*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qz-0010/FileService.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qz-0010/FileService/issues"
+  },
+  "homepage": "https://github.com/qz-0010/FileService#readme"
+}
